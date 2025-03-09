@@ -18,7 +18,7 @@ class MarkovMachine {
 
   makeChains() {
     // TODO
-    let this.chains = {}; // initialize empty object 
+    this.chains = {}; // initialize empty object 
     for (let i = 0; i < this.words.length; i++){
       let word = this.words[i]; // current word
       let nextWord = this.words[i + 1] || null; // next word, or null if last word
@@ -40,5 +40,18 @@ class MarkovMachine {
 
   makeText(numWords = 100) {
     // TODO
+    let keys = Object.keys(this.chains); // get all words
+    let word = keys[Math.floor(Math.random() * keys.length)]; // pick random starting word
+    let output = [];
+
+    while (output.length < numWords && word != null){
+      output.push(word);
+      
+      let nextWords = this.chains[word];
+      word = nextWords[Math.floor(Math.random() * nextWords.length)];
+    }
+    return output.join(" ");
   }
 }
+
+module.exports = { MarkovMachine };
