@@ -18,6 +18,21 @@ class MarkovMachine {
 
   makeChains() {
     // TODO
+    let this.chains = {}; // initialize empty object 
+    for (let i = 0; i < this.words.length; i++){
+      let word = this.words[i]; // current word
+      let nextWord = this.words[i + 1] || null; // next word, or null if last word
+
+      // if word is not already in chains, add it with an empty array 
+
+      if (!this.chains[word]){
+        this.chains[word] = [];
+      }
+
+      // push nextWord to the array of possible next words 
+      this.chains[word].push(nextWord);
+    }
+
   }
 
 
